@@ -4,19 +4,16 @@ case $1 in
   "success" )
     EMBED_COLOR=3066993
     STATUS_MESSAGE="Passed"
-    ARTIFACT_URL="$CI_JOB_URL/artifacts/download"
     ;;
 
   "failure" )
     EMBED_COLOR=15158332
     STATUS_MESSAGE="Failed"
-    ARTIFACT_URL="Not available"
     ;;
 
   * )
     EMBED_COLOR=0
     STATUS_MESSAGE="Status Unknown"
-    ARTIFACT_URL="Not available"
     ;;
 esac
 
@@ -51,11 +48,11 @@ WEBHOOK_DATA='{
   "avatar_url": "https://gitlab.com/favicon.png",
   "embeds": [ {
     "color": '$EMBED_COLOR',
-    "author": {
-      "name": "Pipeline #'"$CI_PIPELINE_IID"' '"$STATUS_MESSAGE"' - '"$CI_PROJECT_PATH_SLUG"'",
-      "url": "'"$CI_PIPELINE_URL"'",
-      "icon_url": "https://gitlab.com/favicon.png"
-    },
+    # "author": {
+    #   "name": "Pipeline #'"$CI_PIPELINE_IID"' '"$STATUS_MESSAGE"' - '"$CI_PROJECT_PATH_SLUG"'",
+    #   "url": "'"$CI_PIPELINE_URL"'",
+    #   "icon_url": "https://gitlab.com/favicon.png"
+    # },
     "title": "'"$COMMIT_SUBJECT"'",
     "url": "'"$URL"'",
     "description": "'"${COMMIT_MESSAGE//$'\n'/ }"\\n\\n"$CREDITS"'",
@@ -63,6 +60,11 @@ WEBHOOK_DATA='{
       {
         "name": "Commit",
         "value": "'"[\`$CI_COMMIT_SHORT_SHA\`]($CI_PROJECT_URL/commit/$CI_COMMIT_SHA)"'",
+        "inline": true
+      },
+      {
+        "name": "Branch",
+        "value": "'"[\`$CI_COMMIT_REF_NAME\`]($CI_PROJECT_URL/tree/$CI_COMMIT_REF_NAME)"'",
         "inline": true
       }
       ],
