@@ -64,11 +64,6 @@ WEBHOOK_DATA='{
         "name": "Commit",
         "value": "'"[\`$CI_COMMIT_SHORT_SHA\`]($CI_PROJECT_URL/commit/$CI_COMMIT_SHA)"'",
         "inline": true
-      },
-      {
-        "name": "Branch",
-        "value": "'"[\`$CI_COMMIT_REF_NAME\`]($CI_PROJECT_URL/tree/$CI_COMMIT_REF_NAME)"'",
-        "inline": true
       }
       ],
       "timestamp": "'"$TIMESTAMP"'"
