@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 case $1 in
   "success" )
