@@ -37,8 +37,8 @@ WEBHOOK_DATA='{
     "color": '$EMBED_COLOR',
     "author": {
       "name": "Pipeline #'"$CI_PIPELINE_IID"' '"$STATUS_MESSAGE"' - '"$CI_PROJECT_PATH_SLUG"'",
-      "url": "'"$CI_PIPELINE_URL"'"
-      # "icon_url": "https://gitlab.com/favicon.png"
+      "url": "'"$CI_PIPELINE_URL"'",
+      "icon_url": "https://gitlab.com/favicon.png"
     },
     "title": "'"$COMMIT_SUBJECT"'",
     "description": "'"${COMMIT_MESSAGE//$'\n'/ }"\\n\\n"$CREDITS"'",
