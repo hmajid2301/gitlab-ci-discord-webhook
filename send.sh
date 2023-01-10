@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -ex
-
 case $1 in
   "success" )
     EMBED_COLOR=3066993
